@@ -7,6 +7,7 @@ class Block{
             //isStatic:true
            
         }
+        this.visibility = 225;
         this.body = Bodies.rectangle(x, y, width, height, options);
         this.width = width;
         this.height = height;
@@ -15,41 +16,53 @@ class Block{
 
         if(colorcode===1)
         {
-           fill("");
+          this.image=loadImage("0.png");
         }
         if(colorcode===2)
         {
-          fill("");
+          this.image=loadImage("1.png");
         }
         if(colorcode===3)
         {
-           fill("");
+          this.image=loadImage("3.png");
         }
         if(colorcode===4)
         {
-           fill("");
+          this.image=loadImage("4.png");
         }
         if(colorcode===5)
         {
-           fill("");
+          this.image=loadImage("5.png");
         }
         if(colorcode===6)
         {
-          fill("");
+          this.image=loadImage("6.png");
         }
         if(colorcode===1)
         {
-          fill("");
+          this.image=loadImage("0.png");
         }
       }
       display(){
+  
+        if(this.body.speed <3)
+        {
         var angle = this.body.angle;
         var pos= this.body.position;
         push();
         translate(pos.x, pos.y);
         rotate(angle);
         rectMode(CENTER);
-        rect(0,0,this.width, this.height);
+        image(this.image,0,0,this.width, this.height);
         pop();
-      }
+        }
+        else{
+        World.remove(world, this.body);
+        push();
+        this.visibility = this.visibility -5;
+        pop();
+        
+        }
+    }
+
 }
